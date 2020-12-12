@@ -1,6 +1,8 @@
 .aside_section {
     background-color: #ffffff;
+    padding: 10px 0;
 }
+
 
 .button_section button:nth-child(odd) {
     margin-right: 15px;

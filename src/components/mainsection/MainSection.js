@@ -13,7 +13,7 @@ class MainSection extends React.Component {
             return <CardItem item={item}  key={i}/>
           });
         } else {
-          renderMarkup = <h4 style={{textAlign:'center'}}>No data found</h4>
+          renderMarkup = <div class="col-md-12"><h4 style={{textAlign:'center'}}>No data found</h4></div>
         }
       }
       
