@@ -15,13 +15,21 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ### `npm run ssr`
-- Comment "homepage":"" properties in package.json to run server side render.
+- Open package.json
+- Remove 
+- Remove "homepage":"" properties.
+- Now run: npm run ssr
+
 Runs the app in the Server Side Render\
 Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
 
 
 ### npm run deploy
 
+- Open package.json
+- Add "homepage": "https://bewithshakir.github.io/ssr-react-test"
+- Save the file
+- Run command: npm run deploy
 - It will deploy the app on github/
 
 
