@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.1838e469.chunk.css",
-    "main.js": "/static/js/main.b4f6852e.chunk.js",
-    "main.js.map": "/static/js/main.b4f6852e.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.795b40ce.js",
-    "runtime-main.js.map": "/static/js/runtime-main.795b40ce.js.map",
-    "static/css/2.20aa2d7b.chunk.css": "/static/css/2.20aa2d7b.chunk.css",
-    "static/js/2.5a49225c.chunk.js": "/static/js/2.5a49225c.chunk.js",
-    "static/js/2.5a49225c.chunk.js.map": "/static/js/2.5a49225c.chunk.js.map",
-    "static/js/3.b8203a26.chunk.js": "/static/js/3.b8203a26.chunk.js",
-    "static/js/3.b8203a26.chunk.js.map": "/static/js/3.b8203a26.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/2.20aa2d7b.chunk.css.map": "/static/css/2.20aa2d7b.chunk.css.map",
-    "static/css/main.1838e469.chunk.css.map": "/static/css/main.1838e469.chunk.css.map",
-    "static/js/2.5a49225c.chunk.js.LICENSE.txt": "/static/js/2.5a49225c.chunk.js.LICENSE.txt"
+    "main.css": "/ssr-react-test/static/css/main.1838e469.chunk.css",
+    "main.js": "/ssr-react-test/static/js/main.a3ce8f39.chunk.js",
+    "main.js.map": "/ssr-react-test/static/js/main.a3ce8f39.chunk.js.map",
+    "runtime-main.js": "/ssr-react-test/static/js/runtime-main.8490902e.js",
+    "runtime-main.js.map": "/ssr-react-test/static/js/runtime-main.8490902e.js.map",
+    "static/css/2.20aa2d7b.chunk.css": "/ssr-react-test/static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.dd8b96eb.chunk.js": "/ssr-react-test/static/js/2.dd8b96eb.chunk.js",
+    "static/js/2.dd8b96eb.chunk.js.map": "/ssr-react-test/static/js/2.dd8b96eb.chunk.js.map",
+    "static/js/3.b8203a26.chunk.js": "/ssr-react-test/static/js/3.b8203a26.chunk.js",
+    "static/js/3.b8203a26.chunk.js.map": "/ssr-react-test/static/js/3.b8203a26.chunk.js.map",
+    "index.html": "/ssr-react-test/index.html",
+    "static/css/2.20aa2d7b.chunk.css.map": "/ssr-react-test/static/css/2.20aa2d7b.chunk.css.map",
+    "static/css/main.1838e469.chunk.css.map": "/ssr-react-test/static/css/main.1838e469.chunk.css.map",
+    "static/js/2.dd8b96eb.chunk.js.LICENSE.txt": "/ssr-react-test/static/js/2.dd8b96eb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.795b40ce.js",
+    "static/js/runtime-main.8490902e.js",
     "static/css/2.20aa2d7b.chunk.css",
-    "static/js/2.5a49225c.chunk.js",
+    "static/js/2.dd8b96eb.chunk.js",
     "static/css/main.1838e469.chunk.css",
-    "static/js/main.b4f6852e.chunk.js"
+    "static/js/main.a3ce8f39.chunk.js"
   ]
 }
