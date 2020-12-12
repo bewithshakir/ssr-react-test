@@ -1,13 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import {
+  BrowserRouter
+} from "react-router-dom";
+
+
+
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
+const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
+renderMethod(
+  <BrowserRouter>
     <App />
-  </React.StrictMode>,
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
