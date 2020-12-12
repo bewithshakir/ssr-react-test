@@ -5,7 +5,8 @@ import "regenerator-runtime/runtime";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import {
-  BrowserRouter
+  BrowserRouter,
+  HashRouter
 } from "react-router-dom";
 
 
@@ -16,9 +17,9 @@ import reportWebVitals from './reportWebVitals';
 
 const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
 renderMethod(
-  <BrowserRouter>
+  <HashRouter>
     <App />
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('root')
 );
 

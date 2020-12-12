@@ -23,7 +23,7 @@ class MainSection extends React.Component {
   render() {
     const {data} = this.props;
     return <div className="row main_content_section">
-      {data.loader && <h2 style={{textAlign:'center'}}>Data is loading...</h2>}
+      {data.loader && <div class="col-md-12"><h2 style={{textAlign:'center'}}>Data is loading...</h2></div>}
       {this.renderCard(data)}
     </div>;
   }

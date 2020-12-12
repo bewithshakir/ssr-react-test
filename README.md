@@ -15,18 +15,23 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ### `npm run ssr`
-
+- Comment "homepage":"" properties in package.json to run server side render.
 Runs the app in the Server Side Render\
 Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
 
 
-### Deployment
+### npm run deploy
+
+- It will deploy the app on github/
+
+
+### Deployment steps
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
 
 ### Visit deployed application
-[https://bewithshakir.github.io/home](https://bewithshakir.github.io/home)
+[https://bewithshakir.github.io/ssr-react-test](https://bewithshakir.github.io/ssr-react-test)
 
 
 
