@@ -16,8 +16,7 @@ You will also see any lint errors in the console.
 
 ### `npm run ssr`
 - Open package.json
-- Remove 
-- Remove "homepage":"" properties.
+- Remove "homepage":"" properties. if available
 - Now run: npm run ssr
 
 Runs the app in the Server Side Render\
