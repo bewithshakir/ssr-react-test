@@ -7,6 +7,9 @@
   border-radius: 5px;
 }
 
+.main_content_section .item .card-img-top {
+  max-width: 100%;
+}
 
 
 @media screen and (max-width: 768px) {
@@ -22,8 +25,8 @@
   .App .main_content_section .item .img_wrp {
     text-align: center;
   }
-  .App .main_content_section .item .card-img-top {
+  /* .App .main_content_section .item .card-img-top {
     width: auto;
-  }
+  } */
   
 }

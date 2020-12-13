@@ -87,13 +87,13 @@ class App extends React.Component {
     return (
       <div className="App custom_margin_grid">
           <HeaderNavbar />
-
+          
           <div className="container main">
             <div className="row">
-              <div className="col-md-2 left">
+              <div className="col-md-4 col-lg-2 left">
                 <Sidebar onLaunchFilter={this.onLaunchFilter} />
               </div>
-              <div className="col-md-10">
+              <div className="col-md-8 col-lg-10">
                 <Switch>
                   <Route
                     exact
