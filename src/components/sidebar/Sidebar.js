@@ -5,13 +5,6 @@ import { withRouter } from "react-router-dom";
 import "./Sidebar.css";
 import classnames from "classnames";
 
-import { launchService } from "./launchService";
-import { launchSuccessService } from "./launchSuccessService";
-import { launchLandingService } from "./launchLandingService";
-import { CardModel } from "../shared/cardModel";
-import { getQueryService } from "../shared/getQueryService";
-import { initialLaunchService } from "../../initialLaunchService";
-
 
 class Sidebar extends React.Component {
   state = {

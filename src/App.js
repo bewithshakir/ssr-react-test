@@ -1,17 +1,16 @@
 import React from "react";
 import "./App.css";
 import {
-  BrowserRouter,
   Route,
   Switch,
   Redirect,
+  withRouter
 } from "react-router-dom";
 
 
 import HeaderNavbar from "./components/header/Header";
 import Sidebar from "./components/sidebar/Sidebar";
 import MainSection from "./components/mainsection/MainSection";
-import { initialLaunchService } from './initialLaunchService';
 import { launcherService } from './launcherService';
 import { CardModel } from "./components/shared/cardModel";
 
@@ -30,11 +29,15 @@ class App extends React.Component {
 
   componentDidMount() {
     this.isLoader(null, true);
-    launcherService('https://api.spaceXdata.com/v3/launches?limit=100').getData().then( res=> {
+    const url = 'https://api.spaceXdata.com/v3/launches?limit=100';
+    this.props.history.push(`/home?launches?limit=100`);
+    launcherService(url).getData().then( res=> {
       this.renderData(res);
     })
   }
   renderData(data) {
+    
+    // console.log(this.props)
     const filteredData = data && data.map(
       (item) =>
         new CardModel(
@@ -60,22 +63,26 @@ class App extends React.Component {
     this.isLoader(null, true);
 
     let url = 'https://api.spaceXdata.com/v3/launches?limit=100';
+    let param = '?limit=100';
     if (filter[0].year) {
       const val = filter[0]['year'];
       url+= `&launch_year=${val}`;
+      param+=`&launch_year=${val}`
     }
     if (filter[1].launch) {
       const val = filter[1]['launch'];
       url+= `&launch_success=${val}`;
+      param+=`&launch_success=${val}`;
     }
     if (filter[2].landing) {
       const val = filter[2]['landing'];
       url+= `&land_success=${val}`;
+      param+= `&land_success=${val}`;
     }
-    console.log('url from sidebar', url)
+    this.props.history.push(`/home?${param}`);
     launcherService(url).getData().then( res=> {
       console.log('data', res)
-      this.renderData(res);
+      this.renderData(res, param);
     })
   };
 
@@ -116,4 +123,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);
