@@ -10,10 +10,17 @@ import { launchSuccessService } from "./launchSuccessService";
 import { launchLandingService } from "./launchLandingService";
 import { CardModel } from "../shared/cardModel";
 import { getQueryService } from "../shared/getQueryService";
+import { initialLaunchService } from "../../initialLaunchService";
+
 
 class Sidebar extends React.Component {
   state = {
     selectedFilter: "",
+    filter: [
+      {year: '', active: false},
+      {launch: '', active: false},
+      {landing: '', active: false}
+    ],
     launch: [
       "2006",
       "2007",
@@ -34,101 +41,46 @@ class Sidebar extends React.Component {
     successfullLaunch: ["true", "false"],
     successfullLanding: ["true", "false"],
   };
+  
 
-  componentDidMount() {
-    const activeFilter = getQueryService(this.props);
-    console.log('---did mount--', activeFilter)
-    this.handleSearch(activeFilter)
-    // if active filter is not set then default filter will be 2006
-    /* if (!activeFilter) {
-        
-    } else {
-      // Filter will only work work withing the range shown.
-      if (this.state.launch.indexOf(activeFilter) >= 0) {
-        
-      } else {
-        alert("Filter selected is not found");
-      }
-    } */
-    //
-  }
-  handleSearch(query) {    
-    if (query) {
-        const search = query.split('=');
-        const val = search[1];
-        const queryStr = search[0];
-        // console.log('---------------', queryStr, val)
-        if (query.includes('launch_year')) {
-            console.log('launc year')
-            this.handleLaunchYear(val);
-        }
-        else if (query.includes('launch_succes')) {
-            console.log('launc sucess')
-            this.handleSuccessfullYear(val);
-        }
-        else if (query.includes('land_success')) {
-            console.log('query 2---', query)
-        }
-    } else {
-        this.handleLaunchYear('2006');
-        
-    }
-    
-  }
-
-  handleLaunchYear = async (year) => {
-    this.getRespectiveData(launchService, year, 'launch_year');
+  handleLaunchYear = async (event, text) => {
+    this.classNameHandler(event, 'year', text, 0);    
   };
 
-  handleSuccessfullYear = async(val)=> {
-    // launch_success
-    this.getRespectiveData(launchSuccessService, val, 'launch_succes');
+  handleSuccessfullYear = async(event, text)=> {
+    this.classNameHandler(event, 'launch', text, 1);
   }
 
-  handleSuccessfullLanding = async(val)=> {
-    // launch_success
-    this.getRespectiveData(launchLandingService, val, 'land_success');
+  handleSuccessfullLanding = async(event, text)=> {
+    this.classNameHandler(event, 'landing', text, 2);
   }
 
-  async getRespectiveData(service, val, query, limit='100') {
-
-    this.props.history.push(`/home?limit=${limit}&${query}=${val}`);
-    this.props.onLaunchFilter(null, true);
-    this.setState({ selectedFilter: query+val });
-
-    if (val && limit) {
-        const data = await service(val, limit).getData();
-        if (data && Array.isArray(data)) {
-          const filteredData = data.map(
-            (item) =>
-              new CardModel(
-                item.links.mission_patch_small,
-                item.mission_name,
-                item.mission_id,
-                item.launch_year,
-                item.launch_success,
-                item.rocket.first_stage.cores[0].land_success
-              )
-          );
-          // dispatch data to parent
-          this.props.onLaunchFilter(filteredData, false);
-        }
+  classNameHandler(event, currentFilter, text, index) {
+    const isActive = event.target.classList.value.includes('active');
+    const filter = [...this.state.filter];
+    if (!isActive) {
+      filter[index][currentFilter] = text;
+    } else {
+      filter[index][currentFilter] = '';
     }
-
+    console.log(isActive)
+    this.setState({filter: filter});
+    this.props.onLaunchFilter(filter);
   }
 
   renderLaunch = () => {
-    const { launch, selectedFilter } = this.state;
+    const { launch, selectedFilter, filter } = this.state;
+    
     return (
       Array.isArray(launch) &&
       launch.map((year, i) => (
         <button
           type="button"
           className={classnames("btn btn-primary", {
-            active: selectedFilter === 'launch_year'+year,
+            active: filter[0].year === year,
           })}
           key={i}
-          onClick={() => this.handleLaunchYear(year)}
+          onClick={(event) => this.handleLaunchYear(event, year)}
         >
           {year}
         </button>
@@ -137,17 +89,17 @@ class Sidebar extends React.Component {
   };
 
   renderSuccessFullLaunch = () => {
-    const { successfullLaunch, selectedFilter } = this.state;
+    const { successfullLaunch, selectedFilter, filter } = this.state;
     return (
       Array.isArray(successfullLaunch) &&
       successfullLaunch.map((data, i) => (
         <button
           type="button"
           className={classnames("btn btn-primary", {
-            active: selectedFilter === 'launch_succes'+data,
+            active: filter[1].launch === data,
           })}
           key={i}
-          onClick={() => this.handleSuccessfullYear(data)}
+          onClick={(event) => this.handleSuccessfullYear(event, data)}
         >
           {data}
         </button>
@@ -155,17 +107,17 @@ class Sidebar extends React.Component {
     );
   };
   renderSuccessfullLanding = () => {
-    const { successfullLanding, selectedFilter } = this.state;
+    const { successfullLanding, selectedFilter, filter } = this.state;
     return (
       Array.isArray(successfullLanding) &&
       successfullLanding.map((data, i) => (
         <button
           type="button"
           className={classnames("btn btn-primary", {
-            active: selectedFilter === 'land_succes'+data,
+            active: filter[2].landing === data,
           })}
           key={i}
-          onClick={()=> this.handleSuccessfullLanding(data)}
+          onClick={(event)=> this.handleSuccessfullLanding(event, data)}
         >
           {data}
         </button>
@@ -174,6 +126,7 @@ class Sidebar extends React.Component {
   };
 
   render() {
+    // console.log('---handleLaunchYear----', this.state)
     return (
       <aside className="aside_section">
         <h4>Filters</h4>

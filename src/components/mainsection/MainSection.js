@@ -13,7 +13,7 @@ class MainSection extends React.Component {
             return <CardItem item={item}  key={i}/>
           });
         } else {
-          renderMarkup = <div class="col-md-12"><h4 style={{textAlign:'center'}}>No data found</h4></div>
+          renderMarkup = <div className="col-md-12"><h4 style={{textAlign:'center'}}>No data found</h4></div>
         }
       }
       
@@ -23,7 +23,7 @@ class MainSection extends React.Component {
   render() {
     const {data} = this.props;
     return <div className="row main_content_section">
-      {data.loader && <div class="col-md-12"><h2 style={{textAlign:'center'}}>Data is loading...</h2></div>}
+      {data.loader && <div className="col-md-12"><h2 style={{textAlign:'center'}}>Data is loading...</h2></div>}
       {this.renderCard(data)}
     </div>;
   }
